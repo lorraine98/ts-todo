@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useLoaclStorage = <T>(
+const useLocalStorage = <T>(
   key: string,
   initialValue: T
 ): [T, typeof setValue] => {
@@ -26,4 +26,4 @@ const useLoaclStorage = <T>(
   return [storedValue, setValue];
 };
 
-export default useLoaclStorage;
+export default useLocalStorage;

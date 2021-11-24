@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useTasks } from "../contexts/TaskProvider";
 import Toggle from "./Toggle";
 
 interface Props {
@@ -8,11 +9,15 @@ interface Props {
 }
 
 const Task = ({ id, content, complete }: Props) => {
+  const { updateTask, removeTask } = useTasks();
   return (
     <ListItem>
-      <Toggle on={complete} />
+      <Toggle
+        on={complete}
+        onChange={(e) => updateTask(id, e.target.checked)}
+      />
       <Content complete={complete}>{content}</Content>
-      <RemoveButton>Remove</RemoveButton>
+      <RemoveButton onClick={() => removeTask(id)}>Remove</RemoveButton>
     </ListItem>
   );
 };
